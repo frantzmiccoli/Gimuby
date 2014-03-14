@@ -1,6 +1,7 @@
 require 'gimuby'
 require 'gimuby/genetic/solution/solution'
 require 'gimuby/genetic/solution/mutation_strategy/mutation_strategy'
+require 'gimuby/genetic/solution/check_strategy/check_strategy'
 
 # This more complex example shows how to implement a more complex problem like
 # splitting elements into two set with as little difference as possible
@@ -53,6 +54,32 @@ class RemoveOneMutationStrategy < MutationStrategy
     representation = solution.get_solution_representation
     representation.delete representation.choice
     solution.set_solution_representation representation
+    solution.send(:check)
+  end
+end
+
+# We need a check strategy to control that our array has no duplicate
+# and match the expected size
+class LimitedArraySampleCheckStrategy < CheckStrategy
+
+  def initialize(reference_array, sample_size)
+    @reference_array = reference_array
+    @sample_size = sample_size
+  end
+
+  attr_accessor :reference_array
+  attr_accessor :sample_size
+
+  def check(representation)
+    representation = representation.clone
+    representation.uniq!
+    while representation.length < @sample_size
+      try_with = @reference_array.choice
+      unless representation.include? try_with
+        representation.push try_with
+      end
+    end
+    representation
   end
 
 end
@@ -61,10 +88,14 @@ end
 class ArraySplitSolution < Solution
 
   def initialize(picked_indexes = nil)
-    @check_strategy = nil
+    potential_indexes = get_potential_indexes
+    sample_size = potential_indexes.length / 2
+    @check_strategy = LimitedArraySampleCheckStrategy.new(potential_indexes,
+                                                          sample_size)
     @new_generation_strategy = CrossOverNewGenerationStrategy.new()
     @mutation_strategy = RemoveOneMutationStrategy.new
     super(picked_indexes)
+    check
   end
 
   def evaluate
@@ -77,7 +108,6 @@ class ArraySplitSolution < Solution
 
   def set_solution_representation(representation)
     @picked_indexes = representation.clone
-    check
   end
 
   protected
@@ -85,21 +115,6 @@ class ArraySplitSolution < Solution
   def init_representation
     @picked_indexes = []
     check
-  end
-
-  def check
-    # we remove duplicates
-    @picked_indexes.uniq!
-
-    # we add missing indexes until we have elements enough
-    values_number = $array_split_problem.get_values_number
-    available_indexes = get_potential_indexes
-    while @picked_indexes.length < values_number / 2
-      try_with = available_indexes.choice
-      unless @picked_indexes.include? try_with
-        @picked_indexes.push(try_with)
-      end
-    end
   end
 
   def get_potential_indexes
