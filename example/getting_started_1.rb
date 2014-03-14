@@ -1,7 +1,9 @@
 require 'gimuby'
 require 'gimuby/genetic/solution/function_based_solution'
 
-# This sample tries to illustrate a function based optimization.
+# This example tries to illustrate a function based optimization whose
+# variables fit into an array and whose domain with the same bound for each
+# variable.
 # We stay on a simple example just to start for a more advanced usage
 # see the second file
 
@@ -49,6 +51,7 @@ optimizer = factory.get_population {next SampleProblemSolution.new}
   optimizer.generation_step
 end
 
+# STEP 3: We get back the found solution
 puts '[' + optimizer.get_best_solution.get_solution_representation.join(',') + ']'
 puts optimizer.get_best_fitness
 
