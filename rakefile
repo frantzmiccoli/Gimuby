@@ -1,8 +1,7 @@
 require 'rake/testtask'
 
 Rake::TestTask.new do |test|
-  Dir.chdir './test'
-  test.libs << "./test"
+  Dir.chdir './tests'
   test.libs << "../lib"
   test.test_files = FileList['**/test*.rb']
   test.verbose = true

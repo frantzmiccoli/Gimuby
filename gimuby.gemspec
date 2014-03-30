@@ -14,7 +14,7 @@ Gem::Specification.new do |spec|
       'algorithm (named population) and distributed genetic algorithm or ' +
       'island model (named archipelago).' + "\n" +
       'The presented archipelago are NOT distributed (nor with threads, ' +
-      'process, or physical machine). However they let the user benefits of' +
+      'processes, or physical machines). However they let the user benefits of' +
       'the leverage they represent to obtain a better solution with the same ' +
       'amount of resources spent.' + "\n" +
       'Similar to: AI4R, gga4r and darwinning'

@@ -78,9 +78,10 @@ class Population
   end
 
   def get_best_solution
-    @solutions.min_by do |solution|
+    best_solution = @solutions.min_by do |solution|
       solution.get_fitness
     end
+    best_solution
   end
 
   protected

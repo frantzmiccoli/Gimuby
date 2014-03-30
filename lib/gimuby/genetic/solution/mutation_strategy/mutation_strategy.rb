@@ -11,6 +11,7 @@ class MutationStrategy
   def mutate(solution)
     if rand < @mutation_rate
       perform_mutation(solution)
+      solution.reset_fitness_state
     end
   end
 

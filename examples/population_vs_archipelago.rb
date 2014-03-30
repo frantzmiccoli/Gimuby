@@ -4,9 +4,6 @@ require 'time'
 
 SolutionClass = StepSolution
 
-srand(ARGV[0].to_i)
-puts ARGV[0]
-
 # Let's test the following configurations, the optimizer is either population
 # for a standard genetic algorithm, either archipelago for a "distributed"
 # version of the algorithm (nothing is distributed in Gimuby)

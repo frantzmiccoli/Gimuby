@@ -33,6 +33,10 @@ class Solution
     @fitness
   end
 
+  def reset_fitness_state
+    @fitness = nil
+  end
+
   def mutate
     @mutation_strategy.mutate(self)
   end

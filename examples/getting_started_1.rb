@@ -12,10 +12,6 @@ require 'gimuby/genetic/solution/function_based_solution'
 # STEP 1: First we define a solution
 class SampleProblemSolution < FunctionBasedSolution
 
-  def initialize(x_values = nil)
-    super(x_values)
-  end
-
   def evaluate
     product = 1.0
     @x_values.each do |x_value|
@@ -52,6 +48,10 @@ optimizer = factory.get_population {next SampleProblemSolution.new}
 end
 
 # STEP 3: We get back the found solution
+r = optimizer.get_best_solution.get_solution_representation
+e = [-2.46835042100562,1.88147457884558,-0.467589756441865]
+
+
 puts '[' + optimizer.get_best_solution.get_solution_representation.join(',') + ']'
 puts optimizer.get_best_fitness
 
