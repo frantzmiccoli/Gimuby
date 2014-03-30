@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <link href='http://fonts.googleapis.com/css?family=Nothing+You+Could+Do' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet/less" type="text/css" href="less/style.less" />
+    <script type="text/javascript">
+        var less = {
+            env: "development", // or "production"
+            async: true,       // load imports async
+            fileAsync: false,   // load imports async when in a page under
+            // a file protocol
+            poll: 3000,         // when in watch mode, time in ms between polls
+            functions: {},      // user functions, keyed by name
+            dumpLineNumbers: "all", // or "mediaQuery" or "all"
+            relativeUrls: false// whether to adjust url's to be relative
+        };
+    </script>
+    <script type="text/javascript" src="lib/less.min.js"></script>
+    <script type="text/javascript" src="lib/jquery-2.1.0.min.js"></script>
+
+    <script type="text/javascript" src="js/navigation.js"></script>
+
+    <title>Gimuby</title>
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <ul class="nav-elements">
+                <li>
+                    <a href="#head">
+                        <span class="logo" class="">Gimuby</span>
+                    </a>
+                </li>
+
+                <li class="active">
+                    <a href="#introduction">Introduction</a>
+                </li>
+
+                <li>
+                    <a href="#why">Why</a>
+                </li>
+
+                <li>
+                    <a href="#installation">Installation</a>
+                </li>
+
+                <li>
+                    <a href="#basic-usage">Basic&nbsp;usage</a>
+                </li>
+
+                <li>
+                    <a href="#advanced-usage">Advanced&nbsp;usage</a>
+                </li>
+
+                <li>
+                    <a href="#philosophy">Philosophy</a>
+                </li>
+
+                <li>
+                    <a href="#similar">Similar</a>
+                </li>
+
+                <li>
+                    <a href="#license">License</a>
+                </li>
+            </ul>
+
+        </div>
+
+    </nav>
+
+    <div id="page" class="container">
+
+        <div class="row">
+
+            <div class="col-sm-3"></div>
+
+            <div id="text" class="col-sm-6">
+
+                <h1 id="header">
+                    <span class="logo">Gimuby</span>
+                    <br />
+                    <small>Genetic algorithms and Island Model for rUBY</small>
+                </h1>
+
+                <br />
+
+                <div id="introduction" class="content-block">
+
+                    <h2>Introduction</h2>
+
+                    <p>
+                        Genetic algorithms are loved for their flexibility and easiness
+                        of understanding. The island model is initially a way to
+                        distribute genetic algorithm, but also can provide better
+                        results than genetic algorithm even if distribution of
+                        computations is not considered
+                    </p>
+
+                    <p>
+                        Gimuby is providing genetic algorithms and island model as
+                        a Ruby library. Few technical choice are imposed to the end user
+                        and most execution parameters can be easily controlled like
+                        mutation strategy, selection strategy, scaling, sharing,
+                        reproduction strategy.
+                    </p>
+
+                    <p>
+                        Gimuby doesn't use multiprocessing of any kind, thus its
+                        island models are not distributed in any sense.
+                    </p>
+
+                </div>
+
+                <div id="why" class="content-block">
+                    <h2>Why using Gimuby</h2>
+
+                    <h3>Easy problems</h3>
+
+                    <p>
+                        Most problems studied at school are of a special kind that make
+                        them computationnaly easy to solve optimally. You find the right
+                        formula for your model and then you compute what input optimizes
+                        your system.
+                    </p>
+
+                    <h3>Hard problems</h3>
+
+                    <p>
+                        (Un)fortunately some problem are harder, and in thus, for some
+                        weirdos, more interesting. One of the most known examples is the
+                        Traveling Salesman Problem (TSP). A salesman needs to go in
+                        twenty different cities, what order will lead to the shortest
+                        path? To date, no quick way is known to us about how to find the
+                        best order without testing every possibilities (about a billion
+                        billions).
+                    </p>
+
+                    <h3>Heuristics</h3>
+
+                    <p>
+                        Usually systems can work with with not the best but some
+                        acceptable solution, because in the end, salesmen are outside,
+                        working. Approximative and empirical method called heuristics
+                        are used to pragmatically tackle those problems.
+                    </p>
+
+                    <h3>Metaheuristics</h3>
+
+                    <p>
+                        Genetic algorithms and the island model belong to a kind of
+                        heuristic called metaheuristics. They are providing a generic
+                        tool to solve hard problems.
+                    </p>
+
+                    <h3>Is your problem hard?</h3>
+
+                    <p>
+                        The first thing you must know is the nature of your problem. If
+                        you don't know what you are doing and have a doubt about your
+                        problem, there's a 50% probability that you may are using Gimuby
+                        to solve a problem that doesn't need metaheuristics.
+                    </p>
+
+                    <p>
+                        The risk is to spend development time and computational time to
+                        find a half good solution, when your problem could be solved
+                        optimally with less resources. Talk with operational research
+                        experts if this point seems critical to your business.
+                    </p>
+
+                    <h3>Use Gimuby</h3>
+
+                    <p>
+                        If you understand all the above, you may want to use Ruby to
+                        solve your problem. So far Gimuby seems to provide the most
+                        advanced genetic algorithms implementation available on the
+                        language for the following reasons:
+                    </p>
+
+                    <ul>
+                        <li>Support of the island model.</li>
+                        <li>Highly customisable.</li>
+                        <li>
+                            Optimized genetic algorithm available (around the settings
+                            of default parameters).
+                        </li>
+                    </ul>
+
+                </div>
+
+                <div id="installation" class="content-block">
+                    <h2>Installation</h2>
+
+                    <p>
+                        Gimuby is available for Ruby 1.8.7, it could be easily
+                        ported to newer versions but the work is not done yet.
+                    </p>
+
+                    <div class="code">
+                        <pre>gem install gimuby</pre>
+                    </div>
+                </div>
+
+                <div id="basic-usage" class="content-block">
+                    <h2>Basic usage</h2>
+
+                    <p>
+                        Gimuby will always try to minimize the fitness returned of its
+                        individuals. If you want to maximize a function, you will have
+                        to learn the subtle usage of the "-" symbol.
+                    </p>
+
+                    <p>
+                        The simplest usage of Gimuby that can be be made is the
+                        optimization of mathematical function with only one property:
+                        the input variables are float that belong to the same interval.
+                    </p>
+
+                    <p>
+                        In that case you just need to implement your function, wrap it
+                        inside a Solution class and run an algorithm with Gimuby.
+                    </p>
+
+                    <div class="code">
+                        <pre>
+require 'gimuby'
+require 'gimuby/genetic/solution/function_based_solution'
+
+class SampleProblemSolution < FunctionBasedSolution
+
+  def evaluate
+    product = 1.0
+    @x_values.each do |x_value|
+      product *= x_value
+    end
+    product
+  end
+
+  protected
+
+  def get_x_value_min
+    -3.0
+  end
+
+  def get_x_value_max
+    3.0
+  end
+
+  def get_dimension_number
+    3
+  end
+end
+
+factory = Gimuby.get_factory
+factory.optimal_population = TRUE
+optimizer = factory.get_population {next SampleProblemSolution.new}
+
+100.times do
+  optimizer.generation_step
+end
+
+puts '[' + optimizer.get_best_solution.get_solution_representation.join(',') + ']'
+puts optimizer.get_best_fitness
+                        </pre>
+                    </div>
+
+                    <p>
+                        The example above looks dense, but is available with detailed
+                        comments
+                       @TODO insert link
+                    </p>
+                </div>
+
+                <div id="advanced-usage" class="content-block">
+                    <h2>Advanced usage</h2>
+
+                    <p>
+                        The basic usage hides complexity because it is using an edge case
+                        where solutions mutation, check and reproduction strategies can
+                        be easily inferred.
+                    </p>
+
+                    <p>
+                       Most of those strategies can be reused depending on the problem
+                       you are trying to tackle.
+                    </p>
+
+                    <div class="code">
+                        <pre>
+require 'gimuby'
+require 'gimuby/genetic/solution/solution'
+require 'gimuby/genetic/solution/mutation_strategy/mutation_strategy'
+require 'gimuby/genetic/solution/check_strategy/check_strategy'
+
+class ArraySplitProblem
+
+  def initialize
+    @values = [-12,32,42,0,0,-1,4,27,30,22,76,12,11,27]
+  end
+
+  def evaluate(list_of_indexes)
+    if (list_of_indexes.length.to_f - @values.length.to_f / 2.0).abs >= 1
+      raise Exception.new('Unexpected list_of_indexes, invalid solution')
+    end
+
+    sum_1 = 0
+    sum_2 = 0
+    (0..@values.length - 1).each do |index|
+      if list_of_indexes.include? index
+        sum_1 += @values[index]
+      else
+        sum_2 += @values[index]
+      end
+    end
+    (sum_1 - sum_2).abs
+  end
+
+  def get_values_number
+    @values.length
+  end
+
+end
+
+$array_split_problem = ArraySplitProblem.new
+
+class RemoveOneMutationStrategy < MutationStrategy
+
+  # @param solution Solution
+  def perform_mutation(solution)
+    representation = solution.get_solution_representation
+    representation.delete representation.choice
+    solution.set_solution_representation representation
+    solution.send(:check)
+  end
+end
+
+class LimitedArraySampleCheckStrategy < CheckStrategy
+
+  def initialize(reference_array, sample_size)
+    @reference_array = reference_array
+    @sample_size = sample_size
+  end
+
+  attr_accessor :reference_array
+  attr_accessor :sample_size
+
+  def check(representation)
+    representation = representation.clone
+    representation.uniq!
+    while representation.length < @sample_size
+      try_with = @reference_array.choice
+      unless representation.include? try_with
+        representation.push try_with
+      end
+    end
+    representation
+  end
+
+end
+
+class ArraySplitSolution < Solution
+
+  def initialize(picked_indexes = nil)
+    potential_indexes = get_potential_indexes
+    sample_size = potential_indexes.length / 2
+    @check_strategy = LimitedArraySampleCheckStrategy.new(potential_indexes,
+                                                          sample_size)
+    @new_generation_strategy = CrossOverNewGenerationStrategy.new()
+    @mutation_strategy = RemoveOneMutationStrategy.new
+    super(picked_indexes)
+    check
+  end
+
+  def evaluate
+    $array_split_problem.evaluate(@picked_indexes)
+  end
+
+  def get_solution_representation
+    @picked_indexes.clone
+  end
+
+  def set_solution_representation(representation)
+    @picked_indexes = representation.clone
+  end
+
+  protected
+
+  def init_representation
+    @picked_indexes = []
+    check
+  end
+
+  def get_potential_indexes
+    values_number = $array_split_problem.get_values_number
+    potential_indexes = *(0..values_number - 1)
+    potential_indexes
+  end
+
+end
+
+factory = Gimuby.get_factory
+factory.optimal_population = TRUE
+
+optimizer = factory.get_population {next ArraySplitSolution.new}
+
+100.times do
+  optimizer.generation_step
+end
+
+puts '[' + optimizer.get_best_solution.get_solution_representation.join(',') + ']'
+puts optimizer.get_best_fitness
+
+                        </pre>
+                    </div>
+
+                    <p>This example is available with its comments.
+                        @TODO insert link</p>
+                </div>
+
+                <div id="philosophy" class="content-block">
+                    <h2>Philosophy</h2>
+
+                    <p>
+                        Gimuby has been designed to enable highly customisable behaviors.
+                    </p>
+
+                    <p>
+                        Many elements can be modified by setting what are called
+                        strategies. A strategy specify how a given behavior is
+                        run. The following strategies are available:
+                    </p>
+
+                    <ul>
+                        <li>
+                            ConnectStrategy (island model related): connects the
+                            population of the island model (also called archipelago).
+                        </li>
+                        <li>
+                            PickStrategy (genetic algorithms related): select
+                            individuals (also called solution) for reproduction
+                        </li>
+                        <li>
+                            ReplaceStrategy (genetic algorithms related): replace
+                            individuals to make the new generation of a population
+                        </li>
+                        <li>
+                            CheckStrategy (solution related): checks that an individual
+                            is correct.
+                        </li>
+                        <li>
+                            MutationStrategy (solution related): mutates an individual
+                        </li>
+                        <li>
+                            NewGenerationStrategy (solution related): produces new
+                            individuals from two parents
+                        </li>
+                    </ul>
+
+                    <p>
+                        Those strategies are here to make code factorisation possible
+                        among problems. There are a few problems that are implemented
+                        inside Gimuby that uses those factorisation.
+                    </p>
+
+                    <p>
+                        Finer customisation can be achieved by overriding Population and
+                        Archipelago classes but this would cancel the usage of the
+                        factory.
+                    </p>
+
+                    <p>
+                        An example performs a manual instantiation of the optimizers.
+                        It's the best place to start if you want to customize these
+                        aspects.
+                        @TODO INSERT LINK
+                    </p>
+                </div>
+
+                <div id="similar" class="content-block">
+                    <h2>Similar libraries</h2>
+
+                    <p>Similar Ruby libraries sorted according how interesting I think they are:
+                        <a href="http://www.ai4r.org/" target="_blank">AI4R</a>,
+                        <a href="https://github.com/spejman/gga4r" target="_blank">gga4r</a>
+                        and
+                        <a href="https://github.com/dorkrawk/darwinning" target="_blank">darwinning</a>.</p>
+                </div>
+
+                <div id="license" class="content-block">
+                    <h2>License</h2>
+
+                    <p>
+                        Copyright 2013 Fräntz Miccoli released under the MIT
+                        License.
+                    </p>
+                </div>
+
+                <div class="footer">
+                    <span class="glyphicon glyphicon-tint"></span>
+                </div>
+
+            </div>
+
+            <div class="col-sm-3"></div>
+
+        </div>
+    </div>
+</body>
+</html>
