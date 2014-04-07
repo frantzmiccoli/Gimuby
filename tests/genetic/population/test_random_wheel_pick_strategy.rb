@@ -52,7 +52,11 @@ class TestRandomWheelPickStrategy < AbstractTestCase
     scores.sort!.reverse!
     ordered_solutions = []
     while scores.length > 0
-      solution_id = scores_hash.index scores[0]
+      solution_id = if scores_hash.respond_to? :key
+        scores_hash.key scores[0]
+      else
+        scores_hash.index scores[0]
+      end
       scores.slice!(0)
       solutions.each do |solution|
         if solution.object_id == solution_id

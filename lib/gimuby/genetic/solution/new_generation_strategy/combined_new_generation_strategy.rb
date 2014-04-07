@@ -22,6 +22,6 @@ class CombinedNewGenerationStrategy < NewGenerationStrategy
   protected
 
   def get_concrete_strategy
-    @strategies.choice
+    Factory.random_entry(@strategies)
   end
 end

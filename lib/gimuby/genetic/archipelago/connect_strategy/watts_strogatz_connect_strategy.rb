@@ -48,7 +48,7 @@ class WattsStrogatzConnectStrategy < ConnectStrategy
       if node1 < node2 # we do not process the other case (undirected model)
         should_rewire = @rewire_rate < rand()
         if should_rewire
-          new_node = nodes.choice while archipelago.has_edge(node1, new_node)
+          new_node = Factory.random_entry(nodes) while archipelago.has_edge(node1, new_node)
           archipelago.remove_edge(node1, node2)
           archipelago.connect(node1, new_node)
         end
