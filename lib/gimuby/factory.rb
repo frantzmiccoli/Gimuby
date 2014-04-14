@@ -133,8 +133,8 @@ class Factory
     archipelago.connect_strategy = get_random_connect_strategy
     # between 0.01% and ~35%
     archipelago.migration_rate = (rand() * 35.0 / 100.0) + 0.0001
-    archipelago.migration_symmetric = [true, false].choice
-    archipelago.migration_type = [:random, :synchronized, :fixed_time].choice
+    archipelago.migration_symmetric = random_entry(true, false)
+    archipelago.migration_type = random_entry(:random, :synchronized, :fixed_time)
     get_populations_number.times do |_|
       archipelago.add_population(_get_population(:archipelago, &solution_generator))
     end
@@ -176,7 +176,7 @@ class Factory
     solutions_per_population = 0
     min_solutions_per_population = min_population_size / populations_number
     begin
-      picked_solutions_number = solutions_number_range.choice
+      picked_solutions_number = random_entry(solutions_number_range)
       picked_solutions_number /= populations_number
       picked_solutions_number *= populations_number
       solutions_per_population = picked_solutions_number / populations_number
@@ -200,7 +200,8 @@ class Factory
       populations_number_range = *(10..29)
     end
 
-    @_populations_number = populations_number_range.choice
+    
+    @_populations_number = random_entry(populations_number_range)
     @_populations_number
   end
 
@@ -270,6 +271,21 @@ class Factory
     end
     strategy.average_degree = average_degree
     strategy
+  end
+
+  def self.random_entry *args
+    array = args.flatten
+
+    if array.respond_to? :sample
+      array.sample
+    else
+      array.choice  
+    end
+  end
+  
+  private
+  def random_entry *args
+    self.class.random_entry(*args)
   end
 
 end
