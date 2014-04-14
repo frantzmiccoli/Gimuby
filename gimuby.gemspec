@@ -24,7 +24,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
   spec.test_files = Dir.glob('test/**/test_*.rb')
 
-  spec.required_ruby_version = '> 1.8'
+  spec.required_ruby_version = '>= 1.8'
   spec.license = 'MIT'
 
 end
