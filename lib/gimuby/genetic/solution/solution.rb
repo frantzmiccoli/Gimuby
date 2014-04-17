@@ -76,8 +76,10 @@ class Solution
   end
 
   def check
-    checked_representation = @check_strategy.check(get_solution_representation)
-    set_solution_representation(checked_representation)
+    unless @check_strategy.nil?
+      checked_representation = @check_strategy.check(get_solution_representation)
+      set_solution_representation(checked_representation)
+    end
   end
 
   def get_event_manager
