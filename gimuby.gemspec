@@ -2,7 +2,7 @@ Gem::Specification.new do |spec|
   spec.name = 'gimuby'
   spec.version = '0.7.3'
 
-  spec.authors = ['Fräntz Miccoli']
+  spec.authors = ['Frantz Miccoli']
   spec.summary = 'Gimuby: genetic algorithm and island model for Ruby'
   spec.description = 'Implemented for academic purpose, Gimuby is also suitable ' +
       'for teaching purpose. As far as we know this implementation of ' +
