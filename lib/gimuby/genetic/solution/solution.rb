@@ -44,11 +44,9 @@ class Solution
   def reproduce(sol1, sol2)
     new_solutions_representations = @new_generation_strategy.reproduce(sol1, sol2)
     new_solutions_representations.map do |representation|
-      solution = self.class.new(representation)
-      solution.check
-      solution.mutation_strategy = sol1.mutation_strategy
-      solution.check_strategy = sol1.check_strategy
-      solution.new_generation_strategy = sol1.new_generation_strategy
+      solution = sol1.clone
+      solution.set_solution_representation representation
+      solution.reset_fitness_state
       solution
     end
   end
