@@ -46,6 +46,7 @@ class Solution
     new_solutions_representations.map do |representation|
       solution = sol1.clone
       solution.set_solution_representation representation
+      solution.check
       solution.reset_fitness_state
       solution
     end
